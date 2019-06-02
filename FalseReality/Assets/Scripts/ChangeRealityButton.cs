@@ -38,8 +38,10 @@ public class ChangeRealityButton : DimensionItem
 
     private void ActivateButton()
     {
-        Debug.Log("TaDa");
-        realityManager.ChangeReality(affectingReality);
+        if (!realityManager.activeRealities.Contains(affectingReality))
+            realityManager.ChangeReality(affectingReality);
+        else
+            realityManager.RemoveReality(affectingReality);
     }
 
     private void OnTriggerEnter2D(Collider2D col)

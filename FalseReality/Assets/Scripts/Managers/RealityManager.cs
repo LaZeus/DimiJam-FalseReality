@@ -50,6 +50,15 @@ public class RealityManager : MonoBehaviour
         // cameras and farms code here
     }
 
+    public void RemoveReality(DimensionItem.Dimension newReality)
+    {
+        if (activeRealities.Contains(newReality))
+            activeRealities.Remove(newReality);
+
+        ManageCameras();
+        // cameras and farms code here
+    }
+
     public void ChangeReality(DimensionItem.Dimension newReality)
     {
         if (activeRealities.Count > 0)
