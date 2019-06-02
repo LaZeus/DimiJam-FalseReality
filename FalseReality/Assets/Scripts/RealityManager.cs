@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RealityManager : MonoBehaviour
-{
+{ 
     public List<DimensionItem.Dimension> activeRealities = new List<DimensionItem.Dimension>();
 
     [Space]
@@ -32,6 +32,7 @@ public class RealityManager : MonoBehaviour
     void Start()
     {
         ManageCameras();
+        UpdateFarms();
     }
 
     // Update is called once per frame
@@ -56,11 +57,7 @@ public class RealityManager : MonoBehaviour
 
         ManageCameras();
 
-        foreach (FarmSpot farm in farmSpots)
-        {
-            if (!activeRealities.Contains(farm.GetFarmReality()) && farm.GetFarmReality() != DimensionItem.Dimension.Normal)
-                farm.RealityDeactived();
-        }
+        UpdateFarms();
     }
 
     private void ManageCameras()
@@ -68,5 +65,19 @@ public class RealityManager : MonoBehaviour
         redCamera.SetActive(activeRealities.Contains(DimensionItem.Dimension.Red));
         greenCamera.SetActive(activeRealities.Contains(DimensionItem.Dimension.Green));
         blueCamera.SetActive(activeRealities.Contains(DimensionItem.Dimension.Blue));
+    }
+
+    private void UpdateFarms()
+    {
+        foreach (FarmSpot farm in farmSpots)
+        {
+            // check if it's active and needs to be deactivated
+            if (!activeRealities.Contains(farm.GetFarmReality()) && farm.GetFarmReality() != DimensionItem.Dimension.Normal)
+                farm.RealityDeactived();
+            // check if it's locked and activate it
+            else if (farm.GetFarmState() == FarmSpot.FarmState.locked)
+                farm.RealityActived();
+
+        }
     }
 }

@@ -25,21 +25,48 @@ public class FarmSpot : DimensionItem
     // Start is called before the first frame update
     void Start()
     {
-        ChangeState();
+        InitializeDimension();
+        PlantSeeds();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void PlantSeeds()
     {
-
+        if (myState == FarmState.empty)
+            StartCoroutine(GrowSeeds(5,2)); // temp 5
     }
 
+    private IEnumerator GrowSeeds(float duration, float goneBadDuration)
+    {
+        myState = FarmState.growing;
+
+        Debug.Log(myState);
+
+        float startTime = Time.time;
+
+        while (Time.time - startTime < duration)
+            yield return null;
+
+        Debug.Log(myState);
+        myState = FarmState.grown;
+
+        startTime = Time.time;
+
+        while (Time.time - startTime < goneBadDuration)
+            yield return null;
+
+        Debug.Log(myState);
+    }
+
+    /// <Realitystuff>
+    /// 
+    /// </Realitystuff>
+    
     public void RealityChanged()
     {
         myState = FarmState.locked;
     }
 
-    private void ChangeState()
+    private void InitializeDimension()
     {
         switch (myDimension)
         {
@@ -64,13 +91,27 @@ public class FarmSpot : DimensionItem
         }
     }
 
+    public void RealityActived()
+    {
+        Debug.Log("My reality exists");
+        StopAllCoroutines();
+        myState = FarmState.empty;
+    }
+
     public void RealityDeactived()
     {
         Debug.Log("My reality doesn't exist");
+        StopAllCoroutines();
+        myState = FarmState.locked;
     }
 
     public Dimension GetFarmReality()
     {
         return myDimension;
+    }
+
+    public FarmState GetFarmState()
+    {
+        return myState;
     }
 }
