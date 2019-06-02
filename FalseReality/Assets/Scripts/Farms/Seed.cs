@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class Seed : MonoBehaviour
 {
+    [System.Serializable]
     public enum SeedType
     {
         TypeA,
         TybeB,
         TypeC,
-        Count
+        Count,
+        Null
     }
 
     [System.Serializable]

@@ -17,16 +17,25 @@ public class FarmSpot : DimensionItem
     [SerializeField]
     private FarmState myState;
 
+    [SerializeField]
+    private Seed.SeedType currentSeed;
+
     [Space]
 
     [SerializeField]
     private SpriteRenderer myArt;
+
+    private InventoryManager inventory;
+    private UIManager uiManager;
 
     private bool isClose = false;
 
     // Start is called before the first frame update
     private void Start()
     {
+        inventory = FindObjectOfType<InventoryManager>();
+        uiManager = FindObjectOfType<UIManager>();
+        currentSeed = Seed.SeedType.Null;
         InitializeDimension(myArt);
     }
 
@@ -42,11 +51,17 @@ public class FarmSpot : DimensionItem
             {
                 if (myState == FarmState.empty) // can plant
                 {
-
+                    // plant
+                    // show plant UI
+                    uiManager.HidePlantUI();
+                    uiManager.ShowPlantUI();
                 }
                 else if (myState == FarmState.grown) // can pick up
                 {
-
+                    // harvest
+                    inventory.GetCrop(currentSeed);
+                    currentSeed = Seed.SeedType.Null;
+                    StopAllCoroutines();
                 }
             }
     }
@@ -97,7 +112,10 @@ public class FarmSpot : DimensionItem
     private void OnTriggerExit2D(Collider2D col)
     {
         if (col.transform.tag == "Player")
+        {
             isClose = false;
+            uiManager.HidePlantUI();
+        }
     }
 
     #region realityStuff
@@ -109,14 +127,12 @@ public class FarmSpot : DimensionItem
 
     public void RealityActived()
     {
-        Debug.Log("My reality exists");
         StopAllCoroutines();
         myState = FarmState.empty;
     }
 
     public void RealityDeactived()
     {
-        Debug.Log("My reality doesn't exist");
         StopAllCoroutines();
         myState = FarmState.locked;
     }

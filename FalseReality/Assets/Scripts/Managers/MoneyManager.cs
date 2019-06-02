@@ -1,21 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class MoneyManager : MonoBehaviour
 {
     [SerializeField]
     private int myMoney;
 
+    private UIManager uiManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    public void GetMoney(int value)
-    {
-        myMoney += value;
+        uiManager = GetComponent<UIManager>();
+        uiManager.UpdateMoneyUI(myMoney);
     }
 
     public bool CanAfford(int value)
@@ -26,5 +25,14 @@ public class MoneyManager : MonoBehaviour
     public void PayMoney(int value)
     {
         myMoney -= value;
+        uiManager.UpdateMoneyUI(myMoney);
     }
+
+    public void GetMoney(int value)
+    {
+        myMoney += value;
+        uiManager.UpdateMoneyUI(myMoney);
+    }
+
+
 }
