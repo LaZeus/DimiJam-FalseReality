@@ -55,6 +55,8 @@ public class RealityManager : MonoBehaviour
         if (activeRealities.Count > 0)
             activeRealities.RemoveRange(0,activeRealities.Count);
 
+        activeRealities.Add(newReality);
+
         ManageCameras();
 
         UpdateFarms();

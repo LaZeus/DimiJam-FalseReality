@@ -25,7 +25,7 @@ public class FarmSpot : DimensionItem
     // Start is called before the first frame update
     void Start()
     {
-        InitializeDimension();
+        InitializeDimension(myArt);
         PlantSeeds();
     }
 
@@ -73,31 +73,6 @@ public class FarmSpot : DimensionItem
     public void RealityChanged()
     {
         myState = FarmState.locked;
-    }
-
-    private void InitializeDimension()
-    {
-        switch (myDimension)
-        {
-            case Dimension.Normal:
-                myArt.color = Color.gray;
-                myArt.gameObject.layer = 9;
-                break;
-            case Dimension.Red:
-                myArt.color = Color.red;
-                myArt.gameObject.layer = 10;
-                break;
-            case Dimension.Green:
-                myArt.color = Color.green;
-                myArt.gameObject.layer = 11;
-                break;
-            case Dimension.Blue:
-                myArt.color = Color.blue;
-                myArt.gameObject.layer = 12;
-                break;
-            default:
-                break;
-        }
     }
 
     public void RealityActived()
