@@ -28,4 +28,15 @@ public class InventoryManager : MonoBehaviour
     {
         
     }
+
+    public void GetSeed(Seed.SeedType seed)
+    {
+        // add seed
+    }
+
+    public void GetCrop(Seed.SeedType seed)
+    {
+        // add seed to intentory
+        // destroy this
+    }
 }

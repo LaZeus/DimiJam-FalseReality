@@ -40,9 +40,14 @@ public class Seed : MonoBehaviour
         GetStats();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        
+        if (col.transform.tag == "Player")
+            PickedUp();
+    }
+
+    private void PickedUp()
+    {
+        // send message to inventory managers
     }
 }
