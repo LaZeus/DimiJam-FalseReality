@@ -15,13 +15,13 @@ public class RealityManager : MonoBehaviour
     [Space]
 
     [SerializeField]
-    private GameObject RedCamera;
+    private GameObject redCamera;
     
     [SerializeField]
-    private GameObject GreenCamera;
+    private GameObject greenCamera;
     
     [SerializeField]
-    private GameObject BlueCamera;
+    private GameObject blueCamera;
 
     private void FindAllFarms()
     {
@@ -31,7 +31,7 @@ public class RealityManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        ManageCameras();
     }
 
     // Update is called once per frame
@@ -42,7 +42,11 @@ public class RealityManager : MonoBehaviour
 
     public void AddReality(DimensionItem.Dimension newReality)
     {
+        if (!activeRealities.Contains(newReality))
+            activeRealities.Add(newReality);
 
+        ManageCameras();
+        // cameras and farms code here
     }
 
     public void ChangeReality(DimensionItem.Dimension newReality)
@@ -50,6 +54,7 @@ public class RealityManager : MonoBehaviour
         if (activeRealities.Count > 0)
             activeRealities.RemoveRange(0,activeRealities.Count);
 
+        ManageCameras();
 
         foreach (FarmSpot farm in farmSpots)
         {
@@ -60,6 +65,8 @@ public class RealityManager : MonoBehaviour
 
     private void ManageCameras()
     {
-
+        redCamera.SetActive(activeRealities.Contains(DimensionItem.Dimension.Red));
+        greenCamera.SetActive(activeRealities.Contains(DimensionItem.Dimension.Green));
+        blueCamera.SetActive(activeRealities.Contains(DimensionItem.Dimension.Blue));
     }
 }
