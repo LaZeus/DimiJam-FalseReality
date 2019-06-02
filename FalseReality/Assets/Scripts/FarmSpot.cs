@@ -37,6 +37,8 @@ public class FarmSpot : DimensionItem
 
     private IEnumerator GrowSeeds(float duration, float goneBadDuration)
     {
+        // start growing
+
         myState = FarmState.growing;
 
         Debug.Log(myState);
@@ -46,14 +48,21 @@ public class FarmSpot : DimensionItem
         while (Time.time - startTime < duration)
             yield return null;
 
-        Debug.Log(myState);
+        // crop is grown
+        // crop starts going bad
+
         myState = FarmState.grown;
+        Debug.Log(myState);
 
         startTime = Time.time;
 
         while (Time.time - startTime < goneBadDuration)
             yield return null;
 
+        // crop has gone bad
+        // crop falls
+
+        myState = FarmState.empty;
         Debug.Log(myState);
     }
 

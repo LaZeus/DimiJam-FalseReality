@@ -77,7 +77,6 @@ public class RealityManager : MonoBehaviour
             // check if it's locked and activate it
             else if (farm.GetFarmState() == FarmSpot.FarmState.locked)
                 farm.RealityActived();
-
         }
     }
 }
