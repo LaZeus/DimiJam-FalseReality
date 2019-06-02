@@ -36,7 +36,7 @@ public class FarmSpot : DimensionItem
 
     public void RealityChanged()
     {
-
+        myState = FarmState.locked;
     }
 
     private void ChangeState()

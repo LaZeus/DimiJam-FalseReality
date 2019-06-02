@@ -58,7 +58,7 @@ public class RealityManager : MonoBehaviour
 
         foreach (FarmSpot farm in farmSpots)
         {
-            if (!activeRealities.Contains(farm.GetFarmReality()))
+            if (!activeRealities.Contains(farm.GetFarmReality()) && farm.GetFarmReality() != DimensionItem.Dimension.Normal)
                 farm.RealityDeactived();
         }
     }
