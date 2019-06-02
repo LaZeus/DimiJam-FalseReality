@@ -22,17 +22,39 @@ public class FarmSpot : DimensionItem
     [SerializeField]
     private SpriteRenderer myArt;
 
+    private bool isClose = false;
+
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         InitializeDimension(myArt);
-        PlantSeeds();
     }
 
-    public void PlantSeeds()
+    private void Update()
+    {
+        CheckForPlayerInteraction();
+    }
+
+    private void CheckForPlayerInteraction()
+    {
+        if (isClose && myState != FarmState.locked)
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (myState == FarmState.empty) // can plant
+                {
+
+                }
+                else if (myState == FarmState.grown) // can pick up
+                {
+
+                }
+            }
+    }
+
+    public void PlantSeeds(float growingDuration, float goBadDuration)
     {
         if (myState == FarmState.empty)
-            StartCoroutine(GrowSeeds(5,2)); // temp 5
+            StartCoroutine(GrowSeeds(growingDuration, goBadDuration));
     }
 
     private IEnumerator GrowSeeds(float duration, float goneBadDuration)
@@ -66,10 +88,20 @@ public class FarmSpot : DimensionItem
         Debug.Log(myState);
     }
 
-    /// <Realitystuff>
-    /// 
-    /// </Realitystuff>
-    
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.transform.tag == "Player")
+            isClose = true;
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.transform.tag == "Player")
+            isClose = false;
+    }
+
+    #region realityStuff
+
     public void RealityChanged()
     {
         myState = FarmState.locked;
@@ -98,4 +130,5 @@ public class FarmSpot : DimensionItem
     {
         return myState;
     }
+    #endregion
 }

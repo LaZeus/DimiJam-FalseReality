@@ -25,6 +25,11 @@ public class Seed : MonoBehaviour
     [ContextMenuItem("Get Stats", "GetStats")]
     public SeedStats myStats;
 
+    [Space]
+
+    [SerializeField]
+    private SpriteRenderer myArt;
+
     [SerializeField]
     private SeedsStatsManager seedManager;
 
@@ -35,6 +40,7 @@ public class Seed : MonoBehaviour
         seedManager = FindObjectOfType<SeedsStatsManager>();
         inventoryManager = FindObjectOfType<InventoryManager>();
         myStats = seedManager.GetSeedStats(myType);
+        ChangeColor(myType);
     }
 
     // Start is called before the first frame update
@@ -55,5 +61,23 @@ public class Seed : MonoBehaviour
         inventoryManager.GetSeed(myType);
 
         Destroy(gameObject);
+    }
+
+    private void ChangeColor(SeedType myType)
+    {
+        switch (myType)
+        {
+            case SeedType.TypeA:
+                myArt.color = Color.cyan;
+                break;
+            case SeedType.TybeB:
+                myArt.color = Color.yellow;
+                break;
+            case SeedType.TypeC:
+                myArt.color = Color.magenta;
+                break;
+            default:
+                break;
+        }
     }
 }

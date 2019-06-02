@@ -2101,6 +2101,7 @@ MonoBehaviour:
     seedName: LaLa
     growthTime: 5
     goneBadTime: 5
+  myArt: {fileID: 967356758}
   seedManager: {fileID: 1303953867}
 --- !u!4 &1957713843
 Transform:
