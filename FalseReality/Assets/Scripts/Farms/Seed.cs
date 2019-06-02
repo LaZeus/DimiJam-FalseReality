@@ -37,6 +37,8 @@ public class Seed : MonoBehaviour
 
     private InventoryManager inventoryManager;
 
+    private PlayerDetection playerDetection;
+
     private void GetStats()
     {
         seedManager = FindObjectOfType<SeedsStatsManager>();
@@ -49,12 +51,8 @@ public class Seed : MonoBehaviour
     void Start()
     {
         GetStats();
-    }
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.transform.tag == "Player")
-            PickedUp();
+        playerDetection = GetComponent<PlayerDetection>();
+        playerDetection.onDetection = PickedUp;
     }
 
     private void PickedUp()

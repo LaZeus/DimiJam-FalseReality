@@ -36,7 +36,7 @@ public class FarmSpot : DimensionItem
     private UIManager uiManager;
     private SeedsStatsManager seedsStats;
 
-    private bool isClose = false;
+    private PlayerDetection playerDetection;
 
     // Start is called before the first frame update
     private void Start()
@@ -44,6 +44,9 @@ public class FarmSpot : DimensionItem
         inventory = FindObjectOfType<InventoryManager>();
         uiManager = FindObjectOfType<UIManager>();
         seedsStats = FindObjectOfType<SeedsStatsManager>();
+
+        playerDetection = GetComponent<PlayerDetection>();
+        playerDetection.stoppedDetection = uiManager.HidePlantUI;
 
         currentSeed = Seed.SeedType.Null;
         InitializeDimension(myArt);
@@ -56,7 +59,7 @@ public class FarmSpot : DimensionItem
 
     private void CheckForPlayerInteraction()
     {
-        if (isClose && myState != FarmState.locked)
+        if (playerDetection.IsClose && myState != FarmState.locked)
             if (Input.GetKeyDown(KeyCode.E))
             {
                 if (myState == FarmState.empty) // can plant
@@ -140,21 +143,6 @@ public class FarmSpot : DimensionItem
     {
         StopAllCoroutines();
         growthBar.gameObject.SetActive(false);
-    }
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.transform.tag == "Player")
-            isClose = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D col)
-    {
-        if (col.transform.tag == "Player")
-        {
-            isClose = false;
-            uiManager.HidePlantUI();
-        }
     }
 
     #region realityStuff

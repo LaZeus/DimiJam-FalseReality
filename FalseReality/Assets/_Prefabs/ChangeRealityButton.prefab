@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1850649761218619939}
   - component: {fileID: 1850649761218619940}
   - component: {fileID: 1850649761218619941}
+  - component: {fileID: 5283082490673937192}
   m_Layer: 0
   m_Name: ChangeRealityButton
   m_TagString: Untagged
@@ -87,6 +88,18 @@ MonoBehaviour:
   affectingReality: 1
   additiveReality: 0
   myArt: {fileID: 1850649762305329907}
+--- !u!114 &5283082490673937192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850649761218619943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2d3c46a8fdef3b4f8202dcc084e9b1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1850649762305329909
 GameObject:
   m_ObjectHideFlags: 0

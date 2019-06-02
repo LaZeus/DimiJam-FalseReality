@@ -17,13 +17,15 @@ public class ChangeRealityButton : DimensionItem
 
     private RealityManager realityManager;
 
-    private bool canBeTriggered = false;
+    private PlayerDetection playerDetection;
 
     // Start is called before the first frame update
     void Start()
     {
         realityManager = FindObjectOfType<RealityManager>();
         InitializeDimension(myArt,affectingReality);
+
+        playerDetection = GetComponent<PlayerDetection>();
     }
 
     // Update is called once per frame
@@ -34,7 +36,7 @@ public class ChangeRealityButton : DimensionItem
 
     private void CheckIfTriggered()
     {
-        if (canBeTriggered)
+        if (playerDetection.IsClose)
             if (Input.GetKeyDown(KeyCode.E))
                 ActivateButton();
     }
@@ -48,17 +50,5 @@ public class ChangeRealityButton : DimensionItem
                 realityManager.ChangeReality(affectingReality);
         else
             realityManager.RemoveReality(affectingReality);
-    }
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.transform.tag == "Player")
-            canBeTriggered = true;
-    }
-
-    private void OnTriggerExit2D(Collider2D col)
-    {
-        if (col.transform.tag == "Player")
-            canBeTriggered = false;
     }
 }
