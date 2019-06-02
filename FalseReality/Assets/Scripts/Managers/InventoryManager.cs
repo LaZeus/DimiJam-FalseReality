@@ -18,7 +18,6 @@ public class InventoryManager : MonoBehaviour
     void Start()
     {
         InitializeInventory();
-        uiManager.UpdateSeedsUI();
     }
 
     private void InitializeInventory()

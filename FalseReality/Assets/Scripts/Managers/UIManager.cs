@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     {
         inventory = GetComponent<InventoryManager>();
         AssignButtons();
+        UpdateSeedsUI();
     }
 
     private void AssignButtons()
@@ -52,7 +53,10 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < inventory.myInventory.GetLength(0); i++)
         {
-            seedsUI[i].text = inventory.seedNames[i] + ": " + inventory.myInventory[i, 0];
+            seedsUI[i].text = 
+                inventory.seedNames[i] + ": " + 
+                inventory.myInventory[i, 0] + " | " + 
+                inventory.myInventory[i, 1];
         }
     }
 

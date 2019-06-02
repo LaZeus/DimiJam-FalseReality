@@ -132,6 +132,7 @@ public class FarmSpot : DimensionItem
         // crop falls
 
         myState = FarmState.empty;
+        growthBar.gameObject.SetActive(false);
         Debug.Log(myState);
     }
 
