@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -8,14 +9,24 @@ public class InventoryManager : MonoBehaviour
     // [x, 1] for crops
     public int[,] myInventory;
 
+    [SerializeField]
+    private TextMeshProUGUI[] seedsUI;
+
+    private SeedsStatsManager seedsStats;
+    private string[] seedNames;
+
     // Start is called before the first frame update
     void Start()
     {
         InitializeInventory();
+        UpdateSeedsUI();
     }
 
     private void InitializeInventory()
     {
+        seedsStats = GetComponent<SeedsStatsManager>();
+        seedNames = seedsStats.GetSeedNames();
+
         myInventory = new int[(int)Seed.SeedType.Count, 2];
 
         for (int i = 0; i < myInventory.GetLength(0); i++)
@@ -32,11 +43,24 @@ public class InventoryManager : MonoBehaviour
     public void GetSeed(Seed.SeedType seed)
     {
         // add seed
+        int index = (int)seed;
+
+        myInventory[index, 0]++;
+
+        UpdateSeedsUI();
     }
 
     public void GetCrop(Seed.SeedType seed)
     {
         // add seed to intentory
         // destroy this
+    }
+
+    private void UpdateSeedsUI()
+    {
+        for (int i = 0; i < myInventory.GetLength(0); i++)
+        {
+            seedsUI[i].text = seedNames[i] + ": " + myInventory[i, 0];
+        }
     }
 }

@@ -52,7 +52,6 @@ public class ChangeRealityButton : DimensionItem
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log(col.transform.name);
         if (col.transform.tag == "Player")
             canBeTriggered = true;
     }

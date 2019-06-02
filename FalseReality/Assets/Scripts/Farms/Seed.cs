@@ -28,9 +28,12 @@ public class Seed : MonoBehaviour
     [SerializeField]
     private SeedsStatsManager seedManager;
 
+    private InventoryManager inventoryManager;
+
     private void GetStats()
     {
         seedManager = FindObjectOfType<SeedsStatsManager>();
+        inventoryManager = FindObjectOfType<InventoryManager>();
         myStats = seedManager.GetSeedStats(myType);
     }
 
@@ -49,5 +52,8 @@ public class Seed : MonoBehaviour
     private void PickedUp()
     {
         // send message to inventory managers
+        inventoryManager.GetSeed(myType);
+
+        Destroy(gameObject);
     }
 }

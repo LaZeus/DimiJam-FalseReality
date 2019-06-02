@@ -27,4 +27,14 @@ public class SeedsStatsManager : MonoBehaviour
     {
         return GetSeedValues((int)type);
     }
+
+    public string[] GetSeedNames()
+    {
+        string[] names = new string[seedStats.Length];
+
+        for (int i = 0; i < names.Length; i++)
+            names[i] = seedStats[i].seedName;
+
+        return names;
+    }
 }
