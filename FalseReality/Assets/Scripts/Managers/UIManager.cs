@@ -16,10 +16,10 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI[] seedsUI;
 
-    [SerializeField]
     private Button[] plantButtons;
 
     private InventoryManager inventory;
+    private FarmSpot currentFarm;
 
     // Start is called before the first frame update
     void Start()
@@ -57,13 +57,15 @@ public class UIManager : MonoBehaviour
     }
 
     public void OnClicked(int seed)
-    {
-        HidePlantUI();
+    {       
         inventory.PlantSeed(seed);
+        currentFarm.PlantSeeds(seed);
+        HidePlantUI();
     }
 
-    public void ShowPlantUI()
+    public void ShowPlantUI(FarmSpot farm)
     {
+        currentFarm = farm;
         for (int i = 0; i < plantButtons.Length; i++)
         {
             if (inventory.CanPlantSeed(i))
@@ -73,6 +75,7 @@ public class UIManager : MonoBehaviour
 
     public void HidePlantUI()
     {
+        currentFarm = null;
         for (int i = 0; i < plantButtons.Length; i++)
         {
             if (plantButtons[i].IsActive())

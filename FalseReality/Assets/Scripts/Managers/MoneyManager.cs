@@ -33,6 +33,4 @@ public class MoneyManager : MonoBehaviour
         myMoney += value;
         uiManager.UpdateMoneyUI(myMoney);
     }
-
-
 }

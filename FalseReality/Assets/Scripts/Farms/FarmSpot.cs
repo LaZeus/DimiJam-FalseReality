@@ -27,6 +27,7 @@ public class FarmSpot : DimensionItem
 
     private InventoryManager inventory;
     private UIManager uiManager;
+    private SeedsStatsManager seedsStats;
 
     private bool isClose = false;
 
@@ -35,6 +36,8 @@ public class FarmSpot : DimensionItem
     {
         inventory = FindObjectOfType<InventoryManager>();
         uiManager = FindObjectOfType<UIManager>();
+        seedsStats = FindObjectOfType<SeedsStatsManager>();
+
         currentSeed = Seed.SeedType.Null;
         InitializeDimension(myArt);
     }
@@ -54,11 +57,12 @@ public class FarmSpot : DimensionItem
                     // plant
                     // show plant UI
                     uiManager.HidePlantUI();
-                    uiManager.ShowPlantUI();
+                    uiManager.ShowPlantUI(this);
                 }
                 else if (myState == FarmState.grown) // can pick up
                 {
                     // harvest
+                    myState = FarmState.empty;
                     inventory.GetCrop(currentSeed);
                     currentSeed = Seed.SeedType.Null;
                     StopAllCoroutines();
@@ -66,8 +70,14 @@ public class FarmSpot : DimensionItem
             }
     }
 
-    public void PlantSeeds(float growingDuration, float goBadDuration)
+    public void PlantSeeds(int seed)
     {
+        currentSeed = (Seed.SeedType)seed;
+
+        Seed.SeedStats currentSeedStats = seedsStats.GetSeedStats(currentSeed);
+
+        float growingDuration = currentSeedStats.growthTime; /////////////////////////////////////////////////////////////
+        float goBadDuration = currentSeedStats.goneBadTime;
         if (myState == FarmState.empty)
             StartCoroutine(GrowSeeds(growingDuration, goBadDuration));
     }
