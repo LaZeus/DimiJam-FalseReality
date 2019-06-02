@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FarmSpot : DimensionItem
 {
@@ -24,6 +25,12 @@ public class FarmSpot : DimensionItem
 
     [SerializeField]
     private SpriteRenderer myArt;
+
+    [SerializeField]
+    private Slider growthBar;
+
+    [SerializeField]
+    private Image sliderFill;
 
     private InventoryManager inventory;
     private UIManager uiManager;
@@ -65,7 +72,7 @@ public class FarmSpot : DimensionItem
                     myState = FarmState.empty;
                     inventory.GetCrop(currentSeed);
                     currentSeed = Seed.SeedType.Null;
-                    StopAllCoroutines();
+                    StopGrowth();
                 }
             }
     }
@@ -76,7 +83,7 @@ public class FarmSpot : DimensionItem
 
         Seed.SeedStats currentSeedStats = seedsStats.GetSeedStats(currentSeed);
 
-        float growingDuration = currentSeedStats.growthTime; /////////////////////////////////////////////////////////////
+        float growingDuration = currentSeedStats.growthTime;
         float goBadDuration = currentSeedStats.goneBadTime;
         if (myState == FarmState.empty)
             StartCoroutine(GrowSeeds(growingDuration, goBadDuration));
@@ -90,10 +97,19 @@ public class FarmSpot : DimensionItem
 
         Debug.Log(myState);
 
-        float startTime = Time.time;
+        growthBar.gameObject.SetActive(true);
+        sliderFill.color = Color.green;
 
-        while (Time.time - startTime < duration)
+        float startTime = Time.time;
+        float timeDifference;
+
+        do
+        {
+            timeDifference = Time.time - startTime;
+            growthBar.value = timeDifference / duration;
             yield return null;
+
+        } while (timeDifference < duration);
 
         // crop is grown
         // crop starts going bad
@@ -101,16 +117,28 @@ public class FarmSpot : DimensionItem
         myState = FarmState.grown;
         Debug.Log(myState);
 
-        startTime = Time.time;
+        sliderFill.color = Color.red;
 
-        while (Time.time - startTime < goneBadDuration)
+        startTime = Time.time;
+        do
+        {
+            timeDifference = Time.time - startTime;
+            growthBar.value = timeDifference / duration;
             yield return null;
+
+        } while (timeDifference < goneBadDuration);
 
         // crop has gone bad
         // crop falls
 
         myState = FarmState.empty;
         Debug.Log(myState);
+    }
+
+    private void StopGrowth()
+    {
+        StopAllCoroutines();
+        growthBar.gameObject.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -137,13 +165,13 @@ public class FarmSpot : DimensionItem
 
     public void RealityActived()
     {
-        StopAllCoroutines();
+        StopGrowth();
         myState = FarmState.empty;
     }
 
     public void RealityDeactived()
     {
-        StopAllCoroutines();
+        StopGrowth();
         myState = FarmState.locked;
     }
 
