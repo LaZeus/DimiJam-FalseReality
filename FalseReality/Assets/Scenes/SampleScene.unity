@@ -785,6 +785,8 @@ GameObject:
   - component: {fileID: 1303953864}
   - component: {fileID: 1303953863}
   - component: {fileID: 1303953865}
+  - component: {fileID: 1303953866}
+  - component: {fileID: 1303953867}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -837,6 +839,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMoney: 0
+--- !u!114 &1303953866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303953862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1022c78bcaa5d5e418b49ae54753bd2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1303953867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303953862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93dc3cfc5e88dac418ec5ceb3bd868f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  seedStats:
+  - seedName: LaLa
+    growthTime: 5
+    goneBadTime: 5
+  - seedName: TybeB
+    growthTime: 10
+    goneBadTime: 10
+  - seedName: TypeC
+    growthTime: 1
+    goneBadTime: 1
 --- !u!1 &1478940373
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,3 +955,52 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &1957713841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1957713843}
+  - component: {fileID: 1957713842}
+  m_Layer: 0
+  m_Name: Seed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1957713842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957713841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1082a56e700c1404d8fe92b69adac45b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myType: 0
+  myStats:
+    seedName: LaLa
+    growthTime: 5
+    goneBadTime: 5
+  seedManager: {fileID: 1303953867}
+--- !u!4 &1957713843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1957713841}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.1023154, y: 2.1580894, z: -0.3659964}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
