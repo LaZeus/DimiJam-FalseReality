@@ -47,7 +47,7 @@ public class RealityManager : MonoBehaviour
             activeRealities.Add(newReality);
 
         ManageCameras();
-        // cameras and farms code here
+        UpdateFarms();
     }
 
     public void RemoveReality(DimensionItem.Dimension newReality)
@@ -56,7 +56,7 @@ public class RealityManager : MonoBehaviour
             activeRealities.Remove(newReality);
 
         ManageCameras();
-        // cameras and farms code here
+        UpdateFarms();
     }
 
     public void ChangeReality(DimensionItem.Dimension newReality)
@@ -67,7 +67,6 @@ public class RealityManager : MonoBehaviour
         activeRealities.Add(newReality);
 
         ManageCameras();
-
         UpdateFarms();
     }
 

@@ -7,6 +7,9 @@ public class ChangeRealityButton : DimensionItem
     [SerializeField]
     private Dimension affectingReality;
 
+    [SerializeField]
+    private bool additiveReality;
+
     [Space]
 
     [SerializeField]
@@ -39,7 +42,10 @@ public class ChangeRealityButton : DimensionItem
     private void ActivateButton()
     {
         if (!realityManager.activeRealities.Contains(affectingReality))
-            realityManager.ChangeReality(affectingReality);
+            if (additiveReality)
+                realityManager.AddReality(affectingReality);
+            else
+                realityManager.ChangeReality(affectingReality);
         else
             realityManager.RemoveReality(affectingReality);
     }

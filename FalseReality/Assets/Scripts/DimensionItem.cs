@@ -53,7 +53,7 @@ public class DimensionItem : MonoBehaviour
                 myArt.gameObject.layer = 11;
                 break;
             case Dimension.Blue:
-                myArt.color = Color.blue;
+                myArt.gameObject.layer = 12;
                 break;
             default:
                 break;
@@ -71,7 +71,7 @@ public class DimensionItem : MonoBehaviour
                 myArt.color = Color.green;
                 break;
             case Dimension.Blue:
-                myArt.gameObject.layer = 12;
+                myArt.color = Color.blue;
                 break;
             default:
                 break;
