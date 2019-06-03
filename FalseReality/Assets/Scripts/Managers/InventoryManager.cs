@@ -33,10 +33,9 @@ public class InventoryManager : MonoBehaviour
                 myInventory[i, j] = 0;
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool HaveCrop(Seed.SeedType type)
     {
-        
+        return myInventory[(int)type, 1] > 0;
     }
 
     public bool CanPlantSeed(int index)
@@ -47,6 +46,14 @@ public class InventoryManager : MonoBehaviour
     public void PlantSeed(int index)
     {
         myInventory[index, 0]--;
+        uiManager.UpdateSeedsUI();
+    }
+
+    public void GiveCrop(Seed.SeedType seed)
+    {
+        if (HaveCrop(seed))
+            myInventory[(int)seed, 1]--;
+
         uiManager.UpdateSeedsUI();
     }
 

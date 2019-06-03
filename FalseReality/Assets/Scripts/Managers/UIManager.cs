@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
     private TextMeshProUGUI[] ShopPrices;
 
     private InventoryManager inventory;
+    private MoneyManager moneyManager;
     private SeedsStatsManager seedsStats;
 
     private FarmSpot currentFarm;
@@ -38,6 +39,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         inventory = GetComponent<InventoryManager>();
+        moneyManager = GetComponent<MoneyManager>();
         seedsStats = GetComponent<SeedsStatsManager>();
 
         seedNames = seedsStats.GetSeedNames();
@@ -116,12 +118,20 @@ public class UIManager : MonoBehaviour
 
     public void BuySeed(ShopItem data)
     {
-
+        if (moneyManager.CanAfford(data.price))
+        {
+            moneyManager.PayMoney(data.price);
+            inventory.GetSeed(data.myType);
+        }
     }
 
     public void SellSeed(ShopItem data)
     {
-
+        if (inventory.HaveCrop(data.myType))
+        {
+            inventory.GiveCrop(data.myType);
+            moneyManager.GetMoney(data.price);
+        }
     }
 
     #endregion
