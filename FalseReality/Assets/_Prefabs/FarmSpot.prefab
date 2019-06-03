@@ -156,6 +156,10 @@ MonoBehaviour:
   myState: 0
   currentSeed: 4
   myArt: {fileID: 1970139033977033404}
+  farmSprites:
+  - {fileID: 21300008, guid: a1dd50ce7065b04489a15d0db64085a4, type: 3}
+  - {fileID: 21300010, guid: a1dd50ce7065b04489a15d0db64085a4, type: 3}
+  - {fileID: 21300022, guid: a1dd50ce7065b04489a15d0db64085a4, type: 3}
   growthBar: {fileID: 6328773474834715897}
   sliderFill: {fileID: 6449329925106474977}
 --- !u!114 &425014122

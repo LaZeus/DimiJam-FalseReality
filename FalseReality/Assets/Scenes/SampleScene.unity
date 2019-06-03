@@ -6529,29 +6529,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1970139034260540061, guid: 73244fb56af18664c872b57bdd861ee4,
-        type: 3}
-      propertyPath: farmSprites.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1970139034260540061, guid: 73244fb56af18664c872b57bdd861ee4,
-        type: 3}
-      propertyPath: farmSprites.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300008, guid: a1dd50ce7065b04489a15d0db64085a4,
-        type: 3}
-    - target: {fileID: 1970139034260540061, guid: 73244fb56af18664c872b57bdd861ee4,
-        type: 3}
-      propertyPath: farmSprites.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300010, guid: a1dd50ce7065b04489a15d0db64085a4,
-        type: 3}
-    - target: {fileID: 1970139034260540061, guid: 73244fb56af18664c872b57bdd861ee4,
-        type: 3}
-      propertyPath: farmSprites.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300022, guid: a1dd50ce7065b04489a15d0db64085a4,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73244fb56af18664c872b57bdd861ee4, type: 3}
 --- !u!1001 &3115026825504957672
