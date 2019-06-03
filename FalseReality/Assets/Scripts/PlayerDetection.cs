@@ -11,11 +11,15 @@ public class PlayerDetection : MonoBehaviour
 
     public bool IsClose { get; set; }
 
+    [SerializeField]
+    private GameObject indicator;
+
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.transform.tag == "Player")
         {
             IsClose = true;
+            if (indicator != null) indicator.SetActive(true);
             onDetection?.Invoke();
         }
     }
@@ -25,6 +29,7 @@ public class PlayerDetection : MonoBehaviour
         if (col.transform.tag == "Player")
         {
             IsClose = false;
+            if (indicator != null) indicator.SetActive(false);
             stoppedDetection?.Invoke();
         }
     }

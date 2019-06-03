@@ -106,7 +106,7 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < length; i++)
         {
             ShopPrices[i].transform.parent.GetComponent<ShopItem>().price = prices[i];
-            ShopPrices[i].text = prices[i].ToString();
+            ShopPrices[i].text = prices[i].ToString() + "$";
         }
     }
 
