@@ -50,8 +50,7 @@ public class FarmSpot : DimensionItem
         uiManager = FindObjectOfType<UIManager>();
         seedsStats = FindObjectOfType<SeedsStatsManager>();
 
-        playerDetection = GetComponent<PlayerDetection>();
-        playerDetection.stoppedDetection = uiManager.HidePlantUI;
+        if (playerDetection == null) PlayerDetectionInit();
 
         currentSeed = Seed.SeedType.Null;
         InitializeDimension(myArt);
@@ -60,6 +59,17 @@ public class FarmSpot : DimensionItem
     private void Update()
     {
         CheckForPlayerInteraction();
+    }
+
+    private void PlayerDetectionInit()
+    {
+        playerDetection = GetComponent<PlayerDetection>();
+        playerDetection.stoppedDetection = HideUI;
+    }
+
+    private void HideUI()
+    {
+        uiManager.HidePlantUI();
     }
 
     private void ChangeSpriteDependingOnState(int state)
@@ -168,6 +178,7 @@ public class FarmSpot : DimensionItem
 
     public void RealityActived()
     {
+        if (playerDetection == null) PlayerDetectionInit();
         StopGrowth();
         myState = FarmState.empty;
         playerDetection.activated = true;
@@ -175,6 +186,7 @@ public class FarmSpot : DimensionItem
 
     public void RealityDeactived()
     {
+        if (playerDetection == null) PlayerDetectionInit();
         StopGrowth();
         myState = FarmState.locked;
         playerDetection.activated = false;

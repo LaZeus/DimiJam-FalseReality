@@ -11,7 +11,7 @@ public class DoorOpener : MonoBehaviour
     private int seedsToOpenDoor;
 
     [SerializeField]
-    private GameObject door;
+    private GameObject[] doors;
 
     [Space]
 
@@ -21,6 +21,7 @@ public class DoorOpener : MonoBehaviour
     private PlayerDetection playerDetection;
     private InventoryManager inventory;
 
+    private bool isDone = false;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +39,7 @@ public class DoorOpener : MonoBehaviour
 
     private void CheckForPlayer()
     {
-        if (playerDetection.IsClose && inventory.CanPlantSeed((int)preferedType) && door != null)
+        if (playerDetection.IsClose && inventory.CanPlantSeed((int)preferedType) && !isDone)
             if (Input.GetKeyDown(KeyCode.E))
             {
                 inventory.PlantSeed((int)preferedType);
@@ -49,8 +50,11 @@ public class DoorOpener : MonoBehaviour
 
     private void OpenDoor()
     {
-        Destroy(door);
-        door = null;
+        foreach (GameObject door in doors)
+            Destroy(door);
+
+        isDone = true;
+
         playerDetection.DestroyIndicator();
     }
 
