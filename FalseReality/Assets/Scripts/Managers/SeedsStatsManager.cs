@@ -37,4 +37,28 @@ public class SeedsStatsManager : MonoBehaviour
 
         return names;
     }
+
+    public int[] GetSeedPrices()
+    {
+        int[] prices = new int[seedStats.Length];
+
+        for (int i = 0; i < seedStats.Length; i++)
+        {
+            prices[i] = (int)seedStats[i].seedCost;
+        }
+
+        return prices;
+    }
+
+    public int[] GetCropPrices()
+    {
+        int[] prices = new int[seedStats.Length];
+
+        for (int i = 0; i < seedStats.Length; i++)
+        {
+            prices[i] = (int)seedStats[i].cropCost;
+        }
+
+        return prices;
+    }
 }

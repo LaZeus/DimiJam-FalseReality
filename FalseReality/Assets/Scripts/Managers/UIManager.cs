@@ -10,7 +10,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI moneyText;
 
-
     [Header("Plant")]
 
     [SerializeField]
@@ -18,13 +17,28 @@ public class UIManager : MonoBehaviour
 
     private Button[] plantButtons;
 
+    [Header("ShopUI")]
+    [SerializeField]
+    private GameObject shopPanel;
+
+    [SerializeField]
+    private TextMeshProUGUI[] ShopTexts;
+
     private InventoryManager inventory;
+    private SeedsStatsManager seedsStats;
+
     private FarmSpot currentFarm;
+    private string[] seedNames;
+    private int[,] prices;
 
     // Start is called before the first frame update
     void Start()
     {
         inventory = GetComponent<InventoryManager>();
+        seedsStats = GetComponent<SeedsStatsManager>();
+
+        seedNames = seedsStats.GetSeedNames();
+
         AssignButtons();
         UpdateSeedsUI();
     }
@@ -46,6 +60,35 @@ public class UIManager : MonoBehaviour
 
     #endregion
 
+    #region Trader
+
+    public void StartTrades()
+    {
+        Time.timeScale = 0;
+        UpdateShopUI();
+        shopPanel.SetActive(true);
+    }
+
+    private void UpdateShopUI()
+    {
+        int length = ShopTexts.Length;
+
+        for (int i = 0; i < length; i++)
+        {
+            if (i < length / 2)
+                ShopTexts[i].text = "Buy " + seedNames[i];
+            else
+                ShopTexts[i].text = "Sell " + seedNames[i - length/2];
+        }
+    }
+
+    public void StopTrades()
+    {
+        Time.timeScale = 1;
+        shopPanel.SetActive(false);
+    }
+
+    #endregion
 
     #region PlantUI
 

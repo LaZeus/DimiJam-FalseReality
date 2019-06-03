@@ -20,6 +20,8 @@ public class Seed : MonoBehaviour
         public string seedName;
         public float growthTime;
         public float goneBadTime;
+        public float seedCost;
+        public float cropCost;
     }
 
     public SeedType myType;
