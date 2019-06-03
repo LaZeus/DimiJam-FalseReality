@@ -8293,6 +8293,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   indicator: {fileID: 2086285892}
+  activated: 1
 --- !u!114 &1002740045
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8327,6 +8328,7 @@ MonoBehaviour:
   - "I\u2019ve seen some seeds and farms down the road."
   - If you need to buy any seeds or sell me the crops let me know.
   - Be careful if you let the crops in the farms for a long time they will go bad.
+  - You can also give seeds to Catgirl. She might do something for you!
   - Time to farm, farm, Farm!
   textAnim: {fileID: 102884371}
   door: {fileID: 814095587}
