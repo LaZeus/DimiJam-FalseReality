@@ -110,7 +110,7 @@ MonoBehaviour:
     height: 15
     xOffset: 0
     yOffset: 52.5
-    xAdvance: 15
+    xAdvance: 35
     scale: 1
   - id: 40
     x: 383

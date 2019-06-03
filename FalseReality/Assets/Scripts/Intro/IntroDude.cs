@@ -70,5 +70,9 @@ public class IntroDude : MonoBehaviour
 
         yield return new WaitForSeconds(1.5f);
         Destroy(textAnim.gameObject);
+
+        yield return new WaitForSeconds(10f);
+
+        Destroy(gameObject);
     }
 }
