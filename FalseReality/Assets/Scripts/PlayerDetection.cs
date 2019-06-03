@@ -33,4 +33,9 @@ public class PlayerDetection : MonoBehaviour
             stoppedDetection?.Invoke();
         }
     }
+
+    public void DestroyIndicator()
+    {
+        Destroy(indicator);
+    }
 }
