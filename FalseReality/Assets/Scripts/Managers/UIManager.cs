@@ -43,6 +43,7 @@ public class UIManager : MonoBehaviour
         seedNames = seedsStats.GetSeedNames();
 
         AssignButtons();
+        InitializeShopItems();
         UpdateSeedsUI();
     }
 
@@ -64,6 +65,14 @@ public class UIManager : MonoBehaviour
     #endregion
 
     #region Trader
+
+    private void InitializeShopItems()
+    {
+        for (int i = 0; i < ShopPrices.Length; i++)
+        {
+            ShopPrices[i].transform.parent.GetComponent<ShopItem>().myType = (Seed.SeedType)(i % (int)Seed.SeedType.Count); // hack
+        }
+    }
 
     public void StartTrades()
     {
@@ -94,8 +103,8 @@ public class UIManager : MonoBehaviour
 
         for (int i = 0; i < length; i++)
         {
-                ShopPrices[i].text = prices[i].ToString();
-
+            ShopPrices[i].transform.parent.GetComponent<ShopItem>().price = prices[i];
+            ShopPrices[i].text = prices[i].ToString();
         }
     }
 
@@ -103,6 +112,16 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 1;
         shopPanel.SetActive(false);
+    }
+
+    public void BuySeed(ShopItem data)
+    {
+
+    }
+
+    public void SellSeed(ShopItem data)
+    {
+
     }
 
     #endregion

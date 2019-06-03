@@ -445,6 +445,7 @@ GameObject:
   - component: {fileID: 83726925}
   - component: {fileID: 83726924}
   - component: {fileID: 83726923}
+  - component: {fileID: 83726926}
   m_Layer: 5
   m_Name: SellCropButton
   m_TagString: Untagged
@@ -511,7 +512,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 83726924}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1303953868}
+        m_MethodName: SellSeed
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 83726926}
+          m_ObjectArgumentAssemblyTypeName: ShopItem, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &83726924
@@ -551,6 +563,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 83726921}
   m_CullTransparentMesh: 0
+--- !u!114 &83726926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83726921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842cec240faf38742bc1784f5ce8335e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 0
+  myType: 0
 --- !u!1 &345678046
 GameObject:
   m_ObjectHideFlags: 0
@@ -705,6 +731,7 @@ GameObject:
   - component: {fileID: 387854775}
   - component: {fileID: 387854774}
   - component: {fileID: 387854773}
+  - component: {fileID: 387854776}
   m_Layer: 5
   m_Name: SellCropButton
   m_TagString: Untagged
@@ -811,6 +838,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 387854771}
   m_CullTransparentMesh: 0
+--- !u!114 &387854776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387854771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842cec240faf38742bc1784f5ce8335e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 0
+  myType: 0
 --- !u!1 &390591860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,6 +1295,7 @@ GameObject:
   - component: {fileID: 574396633}
   - component: {fileID: 574396632}
   - component: {fileID: 574396631}
+  - component: {fileID: 574396634}
   m_Layer: 5
   m_Name: BuySeedButton
   m_TagString: Untagged
@@ -1360,6 +1402,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574396629}
   m_CullTransparentMesh: 0
+--- !u!114 &574396634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574396629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842cec240faf38742bc1784f5ce8335e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 0
+  myType: 0
 --- !u!1 &582053966
 GameObject:
   m_ObjectHideFlags: 0
@@ -3530,6 +3586,7 @@ GameObject:
   - component: {fileID: 1333868943}
   - component: {fileID: 1333868942}
   - component: {fileID: 1333868941}
+  - component: {fileID: 1333868944}
   m_Layer: 5
   m_Name: SellCropButton
   m_TagString: Untagged
@@ -3636,6 +3693,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1333868939}
   m_CullTransparentMesh: 0
+--- !u!114 &1333868944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1333868939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842cec240faf38742bc1784f5ce8335e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 0
+  myType: 0
 --- !u!1 &1395870726
 GameObject:
   m_ObjectHideFlags: 0
@@ -3648,6 +3719,7 @@ GameObject:
   - component: {fileID: 1395870730}
   - component: {fileID: 1395870729}
   - component: {fileID: 1395870728}
+  - component: {fileID: 1395870731}
   m_Layer: 5
   m_Name: BuySeedButton
   m_TagString: Untagged
@@ -3714,7 +3786,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1395870729}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1303953868}
+        m_MethodName: BuySeed
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1395870731}
+          m_ObjectArgumentAssemblyTypeName: ShopItem, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1395870729
@@ -3754,6 +3837,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1395870726}
   m_CullTransparentMesh: 0
+--- !u!114 &1395870731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395870726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842cec240faf38742bc1784f5ce8335e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 0
+  myType: 0
 --- !u!1 &1398795053
 GameObject:
   m_ObjectHideFlags: 0
@@ -4449,6 +4546,7 @@ GameObject:
   - component: {fileID: 1595896502}
   - component: {fileID: 1595896501}
   - component: {fileID: 1595896500}
+  - component: {fileID: 1595896503}
   m_Layer: 5
   m_Name: BuySeedButton
   m_TagString: Untagged
@@ -4555,6 +4653,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1595896498}
   m_CullTransparentMesh: 0
+--- !u!114 &1595896503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595896498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 842cec240faf38742bc1784f5ce8335e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 0
+  myType: 0
 --- !u!1 &1600870412
 GameObject:
   m_ObjectHideFlags: 0
