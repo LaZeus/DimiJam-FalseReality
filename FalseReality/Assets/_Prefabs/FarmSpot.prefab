@@ -175,8 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2d3c46a8fdef3b4f8202dcc084e9b1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indicator: {fileID: 6837916152088389364, guid: 0c204b5dac075fe44a5a0f0ebe62431a,
-    type: 3}
+  indicator: {fileID: 318337348172650017}
 --- !u!1 &2551766443212774353
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,6 +521,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c204b5dac075fe44a5a0f0ebe62431a, type: 3}
+--- !u!1 &318337348172650017 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6837916152088389364, guid: 0c204b5dac075fe44a5a0f0ebe62431a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6525679178316017877}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4083291063555155417 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7072090906816091404, guid: 0c204b5dac075fe44a5a0f0ebe62431a,

@@ -54,13 +54,13 @@ public class IntroDude : MonoBehaviour
         // sentences
         while (index < dialogueText.Count)
         {
-            textPanel.text = "";
+            textPanel.text = "\"";
             foreach (char letter in dialogueText[index])
             {
                 textPanel.text += letter;
                 yield return new WaitForSeconds(0.05f);
             }
-
+            textPanel.text += "\"";
             yield return new WaitForSeconds(1f);
             index++;
         }

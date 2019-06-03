@@ -31,6 +31,7 @@ public class RealityManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        FindAllFarms();
         ManageCameras();
         UpdateFarms();
     }

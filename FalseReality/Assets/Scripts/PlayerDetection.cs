@@ -14,9 +14,11 @@ public class PlayerDetection : MonoBehaviour
     [SerializeField]
     private GameObject indicator;
 
+    public bool activated = true;
+
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.transform.tag == "Player")
+        if (col.transform.tag == "Player" && activated)
         {
             IsClose = true;
             if (indicator != null) indicator.SetActive(true);
@@ -26,7 +28,7 @@ public class PlayerDetection : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.transform.tag == "Player")
+        if (col.transform.tag == "Player" && activated)
         {
             IsClose = false;
             if (indicator != null) indicator.SetActive(false);

@@ -170,12 +170,14 @@ public class FarmSpot : DimensionItem
     {
         StopGrowth();
         myState = FarmState.empty;
+        playerDetection.activated = true;
     }
 
     public void RealityDeactived()
     {
         StopGrowth();
         myState = FarmState.locked;
+        playerDetection.activated = false;
     }
 
     public Dimension GetFarmReality()

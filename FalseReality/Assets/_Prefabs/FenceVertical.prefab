@@ -141,4 +141,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17e91cfc7eaebe8418166676353a406d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myDimension: 1
+  myDimension: 0
