@@ -7,10 +7,10 @@ public class FarmSpot : DimensionItem
 {
     public enum FarmState
     {
-        locked,
         empty,
         growing,
-        grown
+        grown,
+        locked
     }
 
     [Space]
@@ -25,6 +25,11 @@ public class FarmSpot : DimensionItem
 
     [SerializeField]
     private SpriteRenderer myArt;
+
+    [SerializeField]
+    private Sprite[] farmSprites;
+
+    [Space]
 
     [SerializeField]
     private Slider growthBar;
@@ -57,6 +62,11 @@ public class FarmSpot : DimensionItem
         CheckForPlayerInteraction();
     }
 
+    private void ChangeSpriteDependingOnState(int state)
+    {
+        myArt.sprite = farmSprites[state];
+    }
+
     private void CheckForPlayerInteraction()
     {
         if (playerDetection.IsClose && myState != FarmState.locked)
@@ -72,7 +82,6 @@ public class FarmSpot : DimensionItem
                 else if (myState == FarmState.grown) // can pick up
                 {
                     // harvest
-                    myState = FarmState.empty;
                     inventory.GetCrop(currentSeed);
                     currentSeed = Seed.SeedType.Null;
                     StopGrowth();
@@ -97,6 +106,7 @@ public class FarmSpot : DimensionItem
         // start growing
 
         myState = FarmState.growing;
+        ChangeSpriteDependingOnState((int)myState);
 
         Debug.Log(myState);
 
@@ -118,6 +128,7 @@ public class FarmSpot : DimensionItem
         // crop starts going bad
 
         myState = FarmState.grown;
+        ChangeSpriteDependingOnState((int)myState);
         Debug.Log(myState);
 
         sliderFill.color = Color.red;
@@ -135,12 +146,15 @@ public class FarmSpot : DimensionItem
         // crop falls
 
         myState = FarmState.empty;
+        ChangeSpriteDependingOnState((int)myState);
         growthBar.gameObject.SetActive(false);
         Debug.Log(myState);
     }
 
     private void StopGrowth()
     {
+        myState = FarmState.empty;
+        ChangeSpriteDependingOnState((int)myState);
         StopAllCoroutines();
         growthBar.gameObject.SetActive(false);
     }
