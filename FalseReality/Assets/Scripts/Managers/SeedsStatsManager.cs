@@ -38,6 +38,21 @@ public class SeedsStatsManager : MonoBehaviour
         return names;
     }
 
+    public int[] GetPrices()
+    {
+        int[] prices = new int[seedStats.Length * 2];
+
+        for (int i = 0; i < seedStats.Length; i++)
+            prices[i] = (int)seedStats[i].seedCost;
+
+        for (int i = 0; i < seedStats.Length; i++)
+            prices[i + seedStats.Length] = (int)seedStats[i].cropCost;
+
+        return prices;
+    }
+
+    // delete
+
     public int[] GetSeedPrices()
     {
         int[] prices = new int[seedStats.Length];
@@ -49,6 +64,8 @@ public class SeedsStatsManager : MonoBehaviour
 
         return prices;
     }
+
+    // delete
 
     public int[] GetCropPrices()
     {

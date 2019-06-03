@@ -24,12 +24,15 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI[] ShopTexts;
 
+    [SerializeField]
+    private TextMeshProUGUI[] ShopPrices;
+
     private InventoryManager inventory;
     private SeedsStatsManager seedsStats;
 
     private FarmSpot currentFarm;
     private string[] seedNames;
-    private int[,] prices;
+    private int[] prices;
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +69,7 @@ public class UIManager : MonoBehaviour
     {
         Time.timeScale = 0;
         UpdateShopUI();
+        UpdateShopPrices();
         shopPanel.SetActive(true);
     }
 
@@ -79,6 +83,19 @@ public class UIManager : MonoBehaviour
                 ShopTexts[i].text = "Buy " + seedNames[i];
             else
                 ShopTexts[i].text = "Sell " + seedNames[i - length/2];
+        }
+    }
+
+    private void UpdateShopPrices()
+    {
+        prices = seedsStats.GetPrices();
+
+        int length = ShopPrices.Length;
+
+        for (int i = 0; i < length; i++)
+        {
+                ShopPrices[i].text = prices[i].ToString();
+
         }
     }
 
