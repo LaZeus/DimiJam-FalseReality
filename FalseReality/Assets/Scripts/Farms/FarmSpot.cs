@@ -147,7 +147,7 @@ public class FarmSpot : DimensionItem
         do
         {
             timeDifference = Time.time - startTime;
-            growthBar.value = timeDifference / duration;
+            growthBar.value = timeDifference / goneBadDuration;
             yield return null;
 
         } while (timeDifference < goneBadDuration);

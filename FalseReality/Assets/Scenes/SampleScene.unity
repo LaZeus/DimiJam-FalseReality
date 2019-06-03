@@ -13298,7 +13298,7 @@ MonoBehaviour:
     cropCost: 8
   - seedName: Magenta
     growthTime: 15
-    goneBadTime: 2
+    goneBadTime: 3
     seedCost: 10
     cropCost: 20
 --- !u!114 &1303953868
