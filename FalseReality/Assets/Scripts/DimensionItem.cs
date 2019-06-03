@@ -14,6 +14,11 @@ public class DimensionItem : MonoBehaviour
 
     public Dimension myDimension;
 
+    private void Start()
+    {
+        InitializeDimension(GetComponent<SpriteRenderer>());
+    }
+
     protected void InitializeDimension(SpriteRenderer myArt)
     {
         switch (myDimension)
