@@ -21,6 +21,8 @@ public class DoorOpener : MonoBehaviour
     private PlayerDetection playerDetection;
     private InventoryManager inventory;
 
+    private ParticleSystem particles;
+
     private bool isDone = false;
 
     // Start is called before the first frame update
@@ -28,6 +30,7 @@ public class DoorOpener : MonoBehaviour
     {
         playerDetection = GetComponent<PlayerDetection>();
         inventory = FindObjectOfType<InventoryManager>();
+        particles = GetComponentInChildren<ParticleSystem>();
         SetColor();
     }
 
@@ -44,6 +47,8 @@ public class DoorOpener : MonoBehaviour
             {
                 inventory.PlantSeed((int)preferedType);
                 seedsToOpenDoor--;
+                if (particles.isPlaying) particles.Stop();
+                particles.Play();
                 if (seedsToOpenDoor <= 0) OpenDoor();
             }
     }
@@ -75,5 +80,7 @@ public class DoorOpener : MonoBehaviour
                 break;
         }
 
+        var main = particles.main;
+        main.startColor = myArt.color;
     }
 }
